@@ -1,0 +1,9 @@
+goto_hangqing_page:
+  - action: find_and_click
+    locator:  [id, 'com.xueqiu.android:id/action_message']
+  - action: find_and_click
+    locator:  [xpath, '//*[@text = "行情"]']
+
+goto_jiaoyi_page:
+  - action: find_and_click
+    locator:  [xpath, '//*[@text = "交易"]']
