@@ -8,8 +8,8 @@ from xueqiu_testframe.page.base_page import BasePage
 
 class HangQingPage(BasePage):
 
-    def search(self):
-        self.run_steps("../page/hangqing_page.yaml", "search")
+    def search(self, text):
+        self.run_steps("../page/hangqing_page.yaml", "search", text)
         return self.search_results_list()
 
     def search_results_list(self):

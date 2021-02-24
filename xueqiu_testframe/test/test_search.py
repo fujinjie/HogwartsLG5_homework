@@ -13,10 +13,10 @@ class TestSearch:
     def teardown(self):
         self.app.stop()
 
-    # @pytest.mark.parametrize("text", ["阿里巴巴", "字节跳动", "腾讯"])
-    def test_search(self):
-        results = self.app_start.goto_hangqing_page().search()
-        exc = "阿里巴巴"
+    @pytest.mark.parametrize("text", ["阿里巴巴", "字节跳动", "腾讯"])
+    def test_search(self, text):
+        results = self.app_start.goto_hangqing_page().search(text)
+        exc = text
         assert exc in results
 
 

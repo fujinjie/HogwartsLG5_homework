@@ -10,7 +10,6 @@ from xueqiu_testframe.handle_black import handle_black
 
 class BasePage:
 
-
     def __init__(self, driver:webdriver = None):
             self.driver = driver
 
@@ -43,7 +42,7 @@ class BasePage:
     def finds(self, by, locator):
         return self.driver.find_elements(by, locator)
 
-    def run_steps(self, yaml_path, operation):
+    def run_steps(self, yaml_path, operation, text=None):
         with open(yaml_path, "r", encoding="UTF-8") as f:
             datas = yaml.load(f)
             steps = datas[operation]
@@ -52,7 +51,11 @@ class BasePage:
                 if action == "find_and_click":
                     self.find_and_click(*step["locator"])
                 elif action == "find_and_send":
-                    self.find_and_send(*step["locator"], step["text"])
+                    if text:
+                        arg = text
+                        self.find_and_send(*step["locator"], arg)
+                    else:
+                        print("find_and_send 方法中需要传入arg参数")
                 elif action == "find_and_clear":
                     self.find_and_clear(*step["locator"])
                 elif action == "scroll_find_click":
