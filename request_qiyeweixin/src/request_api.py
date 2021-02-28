@@ -2,7 +2,9 @@
 import pytest
 import requests
 
-class RequestApi:
+from base import Base
+
+class RequestApi(Base):
 
     def get_api(self, url, params=None):
         url = url
